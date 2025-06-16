@@ -90,6 +90,43 @@ export default {
           800: '#9A3412',
           900: '#7C2D12',
         },
+        // Desert & Islamic Color Palette
+        'desert-rose': {
+          50: '#FDF4F3',
+          100: '#FCE7E6',
+          200: '#F9D2CF',
+          300: '#F4B4AF',
+          400: '#EC8B82',
+          500: '#E06B5D', // Main desert rose
+          600: '#CD4F3F',
+          700: '#AB3F32',
+          800: '#8D362E',
+          900: '#75312C',
+        },
+        'islamic-gold': {
+          50: '#FFFDF0',
+          100: '#FFFADC',
+          200: '#FFF4B8',
+          300: '#FFEC85',
+          400: '#FFE047',
+          500: '#FFD700', // Pure Islamic gold
+          600: '#D4AF37', // Arabic gold
+          700: '#B8941F',
+          800: '#9C7A0A',
+          900: '#7D6608',
+        },
+        'sahara': {
+          50: '#FEFCF0',
+          100: '#FDF8E1',
+          200: '#FCF0C3',
+          300: '#F9E79F',
+          400: '#F6DC7A',
+          500: '#F3D155', // Main sahara
+          600: '#E6C547',
+          700: '#D9B73A',
+          800: '#CCA82C',
+          900: '#B8951F',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -123,6 +160,9 @@ export default {
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
         'display': ['Inter', 'system-ui', 'sans-serif'],
+        'arabic': ['Amiri', 'Scheherazade New', 'Noto Sans Arabic', 'system-ui', 'sans-serif'],
+        'calligraphy': ['Amiri Quran', 'Scheherazade New', 'Noto Nastaliq Urdu', 'serif'],
+        'cairo': ['Cairo', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

@@ -657,6 +657,7 @@ function Home() {
         
         /* Font Import */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
         
         /* Scrollbar hide utilities */
         .scrollbar-hide {
@@ -719,9 +720,151 @@ function Home() {
           border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         }
         
+        /* Enhanced Islamic Architectural Elements */
+        .mosque-dome {
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(212, 175, 55, 0.1));
+          border-radius: 50% 50% 50% 50% / 100% 100% 0% 0%;
+          position: relative;
+        }
+        
+        .mosque-dome::before {
+          content: '';
+          position: absolute;
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 16px;
+          background: linear-gradient(to bottom, #FFD700, #D4AF37);
+          border-radius: 2px;
+        }
+        
+        .mosque-dome::after {
+          content: '☪';
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #FFD700;
+          font-size: 12px;
+        }
+        
+        .islamic-arabesque {
+          background-image: 
+            /* Complex Islamic Geometric Pattern - Subtle */
+            repeating-conic-gradient(from 0deg at 50% 50%, 
+              transparent 0deg 10deg, 
+              rgba(255, 215, 0, 0.02) 10deg 20deg,
+              transparent 20deg 30deg,
+              rgba(224, 107, 93, 0.015) 30deg 40deg,
+              transparent 40deg 50deg,
+              rgba(255, 215, 0, 0.01) 50deg 60deg,
+              transparent 60deg),
+            repeating-conic-gradient(from 30deg at 50% 50%, 
+              transparent 0deg 15deg, 
+              rgba(224, 107, 93, 0.012) 15deg 25deg,
+              transparent 25deg 35deg,
+              rgba(255, 215, 0, 0.008) 35deg 45deg,
+              transparent 45deg),
+            radial-gradient(circle at 50% 50%, 
+              rgba(255, 215, 0, 0.005) 0px,
+              rgba(255, 215, 0, 0.005) 1px,
+              transparent 1px,
+              transparent 40px,
+              rgba(224, 107, 93, 0.004) 40px,
+              rgba(224, 107, 93, 0.004) 41px,
+              transparent 41px);
+          background-size: 120px 120px, 80px 80px, 160px 160px;
+          background-position: 0 0, 40px 40px, 80px 80px;
+        }
+        
+        .desert-pattern {
+          background-image: 
+            radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 25%),
+            radial-gradient(circle at 75% 75%, rgba(224, 107, 93, 0.08) 0%, transparent 25%),
+            radial-gradient(circle at 50% 50%, rgba(243, 209, 85, 0.06) 0%, transparent 30%),
+            linear-gradient(45deg, transparent 40%, rgba(255, 215, 0, 0.02) 50%, transparent 60%);
+          background-size: 200px 200px, 150px 150px, 100px 100px, 300px 300px;
+        }
+        
+        .minaret {
+          width: 12px;
+          height: 80px;
+          background: linear-gradient(to bottom, 
+            rgba(255, 215, 0, 0.3) 0%,
+            rgba(212, 175, 55, 0.2) 70%,
+            rgba(224, 107, 93, 0.1) 100%);
+          border-radius: 6px;
+          position: relative;
+        }
+        
+        .minaret::before {
+          content: '';
+          position: absolute;
+          top: -6px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 16px;
+          height: 12px;
+          background: rgba(255, 215, 0, 0.4);
+          border-radius: 50% 50% 50% 50% / 100% 100% 0% 0%;
+        }
+        
+        /* Arabic Calligraphy Effects */
+        .arabic-text {
+          font-family: 'Amiri', 'Scheherazade New', serif;
+          font-weight: 700;
+          text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+        }
+        
+        .calligraphy-glow {
+          background: linear-gradient(45deg, #FFD700, #FFA500, #FF6B35);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        }
+        
+        /* Traditional Pattern Elements */
+        .geometric-border {
+          border-image: linear-gradient(45deg, 
+            #FFD700 0%, 
+            #E06B5D 25%, 
+            #F3D155 50%, 
+            #D4AF37 75%, 
+            #FFD700 100%) 1;
+          border-width: 2px;
+          border-style: solid;
+        }
+        
+        .islamic-star-complex {
+          clip-path: polygon(
+            50% 0%, 
+            57% 20%, 
+            80% 20%, 
+            65% 35%, 
+            85% 60%, 
+            60% 50%, 
+            70% 80%, 
+            50% 65%, 
+            30% 80%, 
+            40% 50%, 
+            15% 60%, 
+            35% 35%, 
+            20% 20%, 
+            43% 20%
+          );
+        }
+        
         /* Cairo Font Family */
         .font-cairo {
           font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        }
+        
+        .font-arabic {
+          font-family: 'Amiri', 'Scheherazade New', 'Noto Sans Arabic', serif;
         }
         
 
@@ -845,11 +988,15 @@ function Home() {
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="pt-40 pb-32 px-6 relative geometric-pattern-3">
-          {/* Decorative Islamic Elements */}
-          <div className="absolute top-20 left-20 w-24 h-24 bg-primary-light/10 islamic-star animate-float opacity-20"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-16 bg-primary-light/10 arabic-arch animate-float-reverse opacity-20"></div>
-          <div className="absolute top-1/2 left-10 w-16 h-16 bg-primary-light/10 islamic-star animate-rotate-float opacity-20"></div>
+        <section className="pt-24 pb-16 px-6 relative islamic-arabesque">
+          {/* Enhanced Decorative Islamic Elements */}
+          <div className="absolute top-12 left-20 mosque-dome animate-float opacity-40"></div>
+          <div className="absolute bottom-12 right-20 w-32 h-16 bg-islamic-gold-500/20 arabic-arch animate-float-reverse opacity-30 border border-islamic-gold-400/20"></div>
+          <div className="absolute top-1/2 left-10 w-20 h-20 bg-desert-rose-500/15 islamic-star-complex animate-rotate-float opacity-25"></div>
+          <div className="absolute top-20 right-32 minaret animate-float opacity-30"></div>
+          <div className="absolute bottom-16 left-32 w-24 h-24 bg-sahara-500/20 islamic-star animate-float-reverse opacity-20"></div>
+          
+
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -1150,9 +1297,11 @@ function Home() {
 
         {/* Features Section */}
         <section id="features" className="py-20 px-6 border-t border-gray-800/50 relative">
-          {/* Decorative Elements for Features */}
-          <div className="absolute top-10 right-10 w-20 h-20 bg-primary-light/5 islamic-star animate-float opacity-30"></div>
-          <div className="absolute bottom-10 left-10 w-28 h-14 bg-primary-light/5 arabic-arch animate-float-reverse opacity-30"></div>
+          {/* Enhanced Decorative Elements for Features */}
+          <div className="absolute top-10 right-10 w-20 h-20 bg-islamic-gold-500/10 islamic-star-complex animate-float opacity-40"></div>
+          <div className="absolute bottom-10 left-10 w-28 h-14 bg-desert-rose-500/10 arabic-arch animate-float-reverse opacity-30 border border-sahara-400/20"></div>
+          <div className="absolute top-1/2 right-1/4 mosque-dome animate-rotate-float opacity-25"></div>
+          <div className="absolute bottom-1/4 left-1/4 minaret animate-float opacity-20"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -1284,9 +1433,11 @@ function Home() {
 
         {/* How It Works - Stepper Section */}
         <section className="py-20 px-6 bg-surface-secondary/10 relative">
-          {/* Decorative Islamic Elements */}
-          <div className="absolute top-16 left-16 w-20 h-20 bg-primary-light/5 islamic-star animate-float opacity-25"></div>
-          <div className="absolute bottom-16 right-16 w-24 h-12 bg-primary-light/5 arabic-arch animate-float-reverse opacity-25"></div>
+          {/* Enhanced Decorative Islamic Elements */}
+          <div className="absolute top-16 left-16 w-20 h-20 bg-sahara-500/15 islamic-star-complex animate-float opacity-30"></div>
+          <div className="absolute bottom-16 right-16 w-24 h-12 bg-islamic-gold-500/10 arabic-arch animate-float-reverse opacity-25 border border-desert-rose-400/15"></div>
+          <div className="absolute top-1/3 right-20 mosque-dome animate-float opacity-20"></div>
+          <div className="absolute bottom-1/3 left-20 minaret animate-float-reverse opacity-25"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -1506,8 +1657,10 @@ function Home() {
 
         {/* Waitlist Section */}
         <section id="waitlist" className="py-20 px-6 relative">
-          {/* Subtle decorative arch */}
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-40 h-20 bg-primary-light/5 arabic-arch animate-float opacity-20"></div>
+          {/* Enhanced decorative elements */}
+          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-40 h-20 bg-islamic-gold-500/10 arabic-arch animate-float opacity-30 border border-desert-rose-400/15"></div>
+          <div className="absolute top-20 left-20 mosque-dome animate-float opacity-25"></div>
+          <div className="absolute bottom-20 right-20 w-16 h-16 bg-sahara-500/15 islamic-star-complex animate-rotate-float opacity-20"></div>
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-4xl font-bold mb-6 animate-fade-in-up">
               Ready to make crypto <span className="text-primary">social</span>?
