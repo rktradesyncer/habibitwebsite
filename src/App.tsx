@@ -36,14 +36,14 @@ function Home() {
   const loadingTextWords = ['easy', 'community', 'social']
   const [cryptoData, setCryptoData] = useState([
     { name: 'Bitcoin', symbol: 'BTC', icon: '₿', price: '€41,234.56', change: 2.45, bgColor: 'bg-orange-500' },
-    { name: 'Ethereum', symbol: 'ETH', icon: 'Ξ', price: '€2,456.78', change: 1.82, bgColor: 'bg-blue-600' },
-    { name: 'Cardano', symbol: 'ADA', icon: '₳', price: '€0.48', change: 3.21, bgColor: 'bg-blue-500' },
-    { name: 'Solana', symbol: 'SOL', icon: '◎', price: '€98.45', change: 5.67, bgColor: 'bg-purple-500' },
-    { name: 'Polygon', symbol: 'MATIC', icon: '⬟', price: '€0.89', change: -1.23, bgColor: 'bg-purple-600' },
-    { name: 'Chainlink', symbol: 'LINK', icon: '⧫', price: '€14.56', change: 0.98, bgColor: 'bg-blue-400' },
+    { name: 'Ethereum', symbol: 'ETH', icon: 'Ξ', price: '€2,456.78', change: 1.82, bgColor: 'bg-indigo-600' },
+    { name: 'Cardano', symbol: 'ADA', icon: '₳', price: '€0.48', change: 3.21, bgColor: 'bg-blue-600' },
+    { name: 'Solana', symbol: 'SOL', icon: '◎', price: '€98.45', change: 5.67, bgColor: 'bg-purple-600' },
+    { name: 'Polygon', symbol: 'MATIC', icon: '⬟', price: '€0.89', change: -1.23, bgColor: 'bg-purple-500' },
+    { name: 'Chainlink', symbol: 'LINK', icon: '⧫', price: '€14.56', change: 0.98, bgColor: 'bg-blue-500' },
     { name: 'Polkadot', symbol: 'DOT', icon: '●', price: '€6.78', change: 2.11, bgColor: 'bg-pink-500' },
     { name: 'Avalanche', symbol: 'AVAX', icon: '▲', price: '€36.89', change: 4.33, bgColor: 'bg-red-500' },
-    { name: 'Cosmos', symbol: 'ATOM', icon: '⚛', price: '€11.23', change: 1.76, bgColor: 'bg-gray-700' },
+    { name: 'Cosmos', symbol: 'ATOM', icon: '⚛', price: '€11.23', change: 1.76, bgColor: 'bg-indigo-700' },
     { name: 'Uniswap', symbol: 'UNI', icon: '🦄', price: '€7.45', change: -0.54, bgColor: 'bg-pink-600' },
     { name: 'Litecoin', symbol: 'LTC', icon: 'Ł', price: '€73.21', change: 1.89, bgColor: 'bg-gray-500' },
     { name: 'Algorand', symbol: 'ALGO', icon: '△', price: '€0.24', change: 6.78, bgColor: 'bg-gray-800' }
@@ -140,7 +140,7 @@ function Home() {
           <div className="absolute inset-0 overflow-hidden">
             {/* Animated Background Orbs */}
             <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-primary-soft rounded-full blur-2xl animate-pulse loading-particle-1"></div>
-            <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-primary-purple rounded-full blur-3xl animate-pulse loading-particle-2"></div>
+            <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-primary-orange rounded-full blur-3xl animate-pulse loading-particle-2"></div>
             <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-gradient-primary-light rounded-full blur-2xl animate-pulse loading-particle-3"></div>
           </div>
 
@@ -201,17 +201,17 @@ function Home() {
         __html: `
         :root {
           /* Base Color Palette */
-          --primary-50: rgb(238 242 255);
-          --primary-100: rgb(224 231 255);
-          --primary-200: rgb(199 210 254);
-          --primary-300: rgb(165 180 252);
-          --primary-400: rgb(129 140 248);
-          --primary-500: rgb(99 102 241);
-          --primary-600: rgb(79 70 229);
-          --primary-700: rgb(67 56 202);
-          --primary-800: rgb(55 48 163);
-          --primary-900: rgb(49 46 129);
-          --primary-950: rgb(30 27 75);
+                  --primary-50: rgb(255 248 241);
+        --primary-100: rgb(254 236 220);
+        --primary-200: rgb(252 217 189);
+        --primary-300: rgb(253 186 140);
+        --primary-400: rgb(255 138 76);
+        --primary-500: rgb(255 107 53);
+        --primary-600: rgb(234 88 12);
+        --primary-700: rgb(194 65 12);
+        --primary-800: rgb(154 52 18);
+        --primary-900: rgb(124 45 18);
+        --primary-950: rgb(67 20 7);
         }
 
         /* Dark Theme (Default) */
@@ -234,11 +234,11 @@ function Home() {
           --accent-main: var(--primary-600);
           --accent-dark: var(--primary-700);
           --accent-darker: var(--primary-800);
-          --accent-bg-light: rgba(99, 102, 241, 0.1);
-          --accent-bg-medium: rgba(99, 102, 241, 0.2);
-          --accent-border: rgba(99, 102, 241, 0.2);
-          --accent-glow-light: rgba(99, 102, 241, 0.3);
-          --accent-glow-strong: rgba(99, 102, 241, 0.6);
+                  --accent-bg-light: rgba(255, 107, 53, 0.1);
+        --accent-bg-medium: rgba(255, 107, 53, 0.2);
+        --accent-border: rgba(255, 107, 53, 0.2);
+        --accent-glow-light: rgba(255, 107, 53, 0.3);
+        --accent-glow-strong: rgba(255, 107, 53, 0.6);
         }
 
         /* Light Theme */
@@ -261,11 +261,11 @@ function Home() {
           --accent-main: var(--primary-700);
           --accent-dark: var(--primary-800);
           --accent-darker: var(--primary-900);
-          --accent-bg-light: rgba(99, 102, 241, 0.08);
-          --accent-bg-medium: rgba(99, 102, 241, 0.15);
-          --accent-border: rgba(99, 102, 241, 0.3);
-          --accent-glow-light: rgba(99, 102, 241, 0.2);
-          --accent-glow-strong: rgba(99, 102, 241, 0.4);
+                  --accent-bg-light: rgba(255, 107, 53, 0.08);
+        --accent-bg-medium: rgba(255, 107, 53, 0.15);
+        --accent-border: rgba(255, 107, 53, 0.3);
+        --accent-glow-light: rgba(255, 107, 53, 0.2);
+        --accent-glow-strong: rgba(255, 107, 53, 0.4);
         }
         
         @keyframes fadeInUp {
@@ -412,7 +412,7 @@ function Home() {
         .animate-delay-600 { animation-delay: 0.6s; }
         
         .gradient-text {
-          background: linear-gradient(-45deg, #3b82f6, #06b6d4, #8b5cf6, #3b82f6);
+          background: linear-gradient(-45deg, #FF6B35, #FF8A4C, #FDBA8C, #FF6B35);
           background-size: 400% 400%;
           background-clip: text;
           -webkit-background-clip: text;
@@ -623,24 +623,24 @@ function Home() {
         
         /* Gradients */
         .bg-gradient-primary { 
-          background: linear-gradient(to bottom right, var(--accent-main), rgb(6 182 212)) !important; 
+          background: linear-gradient(to bottom right, var(--accent-main), #D4AF37) !important; 
         }
         .bg-gradient-primary-progress { 
-          background: linear-gradient(to right, var(--accent-dark), rgb(6 182 212)) !important; 
+          background: linear-gradient(to right, var(--accent-dark), #D4AF37) !important; 
         }
         .border-gradient-primary::after {
-          background: linear-gradient(to right, var(--accent-dark), rgb(6 182 212)) !important;
+          background: linear-gradient(to right, var(--accent-dark), #D4AF37) !important;
         }
         
         /* Background gradient utilities */
         .bg-gradient-primary-soft { 
-          background: linear-gradient(to bottom right, var(--accent-bg-medium), rgba(6, 182, 212, 0.3)) !important; 
+          background: linear-gradient(to bottom right, var(--accent-bg-medium), rgba(212, 175, 55, 0.3)) !important; 
         }
-        .bg-gradient-primary-purple { 
-          background: linear-gradient(to top right, rgba(168, 85, 247, 0.2), var(--accent-bg-light)) !important; 
+        .bg-gradient-primary-orange { 
+          background: linear-gradient(to top right, rgba(255, 107, 53, 0.2), var(--accent-bg-light)) !important; 
         }
         .bg-gradient-primary-light { 
-          background: linear-gradient(to bottom left, rgba(6, 182, 212, 0.25), var(--accent-bg-medium)) !important; 
+          background: linear-gradient(to bottom left, rgba(212, 175, 55, 0.25), var(--accent-bg-medium)) !important; 
         }
         
         /* Mockup transition animations */
@@ -674,38 +674,38 @@ function Home() {
             /* Outer petals/rays */
             repeating-conic-gradient(from 0deg at 50% 50%, 
               transparent 0deg 15deg, 
-              rgba(99, 102, 241, 0.06) 15deg 22.5deg,
+              rgba(255, 107, 53, 0.06) 15deg 22.5deg,
               transparent 22.5deg 37.5deg,
-              rgba(99, 102, 241, 0.06) 37.5deg 45deg,
+              rgba(255, 107, 53, 0.06) 37.5deg 45deg,
               transparent 45deg),
             /* Middle lotus petals */
             repeating-conic-gradient(from 22.5deg at 50% 50%, 
               transparent 0deg 30deg, 
-              rgba(99, 102, 241, 0.04) 30deg 45deg,
+              rgba(255, 107, 53, 0.04) 30deg 45deg,
               transparent 45deg 75deg,
-              rgba(99, 102, 241, 0.04) 75deg 90deg,
+              rgba(255, 107, 53, 0.04) 75deg 90deg,
               transparent 90deg),
             /* Inner geometric pattern */
             repeating-conic-gradient(from 45deg at 50% 50%, 
               transparent 0deg 45deg, 
-              rgba(99, 102, 241, 0.08) 45deg 90deg,
+              rgba(255, 107, 53, 0.08) 45deg 90deg,
               transparent 90deg),
             /* Concentric circles */
             radial-gradient(circle at 50% 50%, 
-              rgba(99, 102, 241, 0.03) 0px,
-              rgba(99, 102, 241, 0.03) 2px,
+              rgba(255, 107, 53, 0.03) 0px,
+              rgba(255, 107, 53, 0.03) 2px,
               transparent 2px,
               transparent 25px,
-              rgba(99, 102, 241, 0.02) 25px,
-              rgba(99, 102, 241, 0.02) 27px,
+              rgba(255, 107, 53, 0.02) 25px,
+              rgba(255, 107, 53, 0.02) 27px,
               transparent 27px,
               transparent 50px,
-              rgba(99, 102, 241, 0.015) 50px,
-              rgba(99, 102, 241, 0.015) 52px,
+              rgba(255, 107, 53, 0.015) 50px,
+              rgba(255, 107, 53, 0.015) 52px,
               transparent 52px,
               transparent 75px,
-              rgba(99, 102, 241, 0.01) 75px,
-              rgba(99, 102, 241, 0.01) 77px,
+              rgba(255, 107, 53, 0.01) 75px,
+              rgba(255, 107, 53, 0.01) 77px,
               transparent 77px);
           background-size: 200px 200px, 160px 160px, 120px 120px, 200px 200px;
           background-position: 0 0, 80px 80px, 40px 40px, 0 0;
@@ -776,18 +776,18 @@ function Home() {
           <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {/* Animated gradient orbs */}
         <div className="absolute top-20 -right-40 w-80 h-80 bg-gradient-primary-soft rounded-full blur-3xl animate-pulse animate-float"></div>
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary-purple rounded-full blur-3xl animate-pulse animate-float-reverse"></div>
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary-orange rounded-full blur-3xl animate-pulse animate-float-reverse"></div>
         <div className="absolute bottom-20 left-1/2 w-64 h-64 bg-gradient-primary-light rounded-full blur-3xl animate-pulse animate-rotate-float"></div>
         
         {/* Floating geometric patterns */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full opacity-60 animate-float"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full opacity-80 animate-float-reverse animate-delay-200"></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-amber-400 rounded-full opacity-80 animate-float-reverse animate-delay-200"></div>
         <div className="absolute bottom-1/3 left-1/5 w-1.5 h-1.5 bg-primary rounded-full opacity-50 animate-rotate-float animate-delay-400"></div>
-        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-purple-400 rounded-full opacity-40 animate-float animate-delay-600"></div>
-        <div className="absolute bottom-1/4 right-1/5 w-2 h-2 bg-cyan-300 rounded-full opacity-70 animate-float-reverse animate-delay-300"></div>
+        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-brand-orange-400 rounded-full opacity-40 animate-float animate-delay-600"></div>
+        <div className="absolute bottom-1/4 right-1/5 w-2 h-2 bg-amber-300 rounded-full opacity-70 animate-float-reverse animate-delay-300"></div>
         
         {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,138,76,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,138,76,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
       </div>
 
       {/* Floating Navigation */}
@@ -903,7 +903,7 @@ function Home() {
                         <div className="p-4 border-b border-gray-800">
                           <div className="flex items-center justify-between mb-4">
                             <h3 className="text-white font-semibold">Community Feed</h3>
-                            <div className="w-8 h-8 bg-indigo-700 rounded-full flex items-center justify-center animate-bounce">
+                            <div className="w-8 h-8 bg-brand-orange-700 rounded-full flex items-center justify-center animate-bounce">
                               <div className="w-4 h-4 relative">
                                 <div className="absolute inset-0 flex items-center justify-center space-x-0.5">
                                   <div className="w-1 h-1 bg-white rounded-full"></div>
@@ -1122,7 +1122,7 @@ function Home() {
                     <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary-light rounded-2xl backdrop-blur-sm border border-primary flex items-center justify-center animate-float">
                       <span className="text-2xl">👥</span>
                     </div>
-                    <div className="absolute bottom-20 -left-6 w-12 h-12 bg-purple-500/20 rounded-xl backdrop-blur-sm border border-purple-500/20 flex items-center justify-center animate-float-reverse">
+                    <div className="absolute bottom-20 -left-6 w-12 h-12 bg-brand-orange-500/20 rounded-xl backdrop-blur-sm border border-brand-orange-500/20 flex items-center justify-center animate-float-reverse">
                       <span className="text-lg">💬</span>
                     </div>
                     <div className="absolute top-1/2 -right-4 w-10 h-10 bg-green-500/20 rounded-lg backdrop-blur-sm border border-green-500/20 flex items-center justify-center animate-rotate-float">
@@ -1184,12 +1184,12 @@ function Home() {
                 {
                   icon: <div className="w-6 h-6 relative">
                     {/* Social Network/Profiles */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg p-1">
+                                                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-brand-orange-500 rounded-lg p-1">
                       <div className="w-full h-full bg-gray-900 rounded flex items-center justify-center">
                         <div className="relative">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                          <div className="w-1 h-1 bg-purple-400 rounded-full absolute -top-0.5 -right-0.5"></div>
-                          <div className="w-1 h-1 bg-cyan-400 rounded-full absolute -bottom-0.5 -left-0.5"></div>
+                                                      <div className="w-1 h-1 bg-brand-orange-400 rounded-full absolute -top-0.5 -right-0.5"></div>
+                                                      <div className="w-1 h-1 bg-amber-400 rounded-full absolute -bottom-0.5 -left-0.5"></div>
                           <div className="w-0.5 h-2 bg-primary absolute top-0.5 left-0.5 rotate-45"></div>
                         </div>
                       </div>
@@ -1201,10 +1201,10 @@ function Home() {
                 {
                   icon: <div className="w-6 h-6 relative">
                     {/* Timeline/Feed */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg p-1">
+                                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg p-1">
                       <div className="w-full h-full bg-gray-900 rounded flex flex-col items-center justify-center space-y-0.5">
                         <div className="w-3 h-0.5 bg-green-400 rounded-full"></div>
-                        <div className="w-2 h-0.5 bg-teal-400 rounded-full"></div>
+                                                  <div className="w-2 h-0.5 bg-amber-400 rounded-full"></div>
                         <div className="w-3 h-0.5 bg-green-400 rounded-full"></div>
                       </div>
                     </div>
@@ -1234,8 +1234,8 @@ function Home() {
                     <div className="absolute inset-0 bg-gradient-primary rounded-lg p-1">
                       <div className="w-full h-full bg-gray-900 rounded flex items-center justify-center">
                         <div className="relative">
-                          <div className="w-2 h-2 border border-cyan-400 rounded-full"></div>
-                          <div className="w-1 h-1 bg-cyan-400 rounded-full absolute top-0.5 left-0.5 opacity-60"></div>
+                          <div className="w-2 h-2 border border-amber-400 rounded-full"></div>
+                          <div className="w-1 h-1 bg-amber-400 rounded-full absolute top-0.5 left-0.5 opacity-60"></div>
                           <div className="w-0.5 h-0.5 bg-primary rounded-full absolute bottom-0 right-0"></div>
                         </div>
                       </div>
@@ -1247,17 +1247,17 @@ function Home() {
                 {
                   icon: <div className="w-6 h-6 relative">
                     {/* Human Connection & Support */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-lg p-1">
+                                                <div className="absolute inset-0 bg-gradient-to-br from-brand-orange-400 to-brand-orange-500 rounded-lg p-1">
                       <div className="w-full h-full bg-gray-900 rounded flex items-center justify-center">
                         <div className="relative">
                           {/* Two people supporting each other */}
-                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
-                          <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full absolute -right-1 top-0"></div>
+                                                      <div className="w-1.5 h-1.5 bg-brand-orange-400 rounded-full"></div>
+                                                      <div className="w-1.5 h-1.5 bg-brand-orange-400 rounded-full absolute -right-1 top-0"></div>
                           {/* Heart/connection symbol between them */}
                           <div className="w-0.5 h-0.5 bg-pink-300 rounded-full absolute -right-0.5 top-0.5"></div>
                           {/* Supporting hand/gesture */}
-                          <div className="w-1 h-0.5 bg-purple-300 rounded-full absolute bottom-0 left-0.25 rotate-12"></div>
-                          <div className="w-1 h-0.5 bg-indigo-300 rounded-full absolute bottom-0 right-0.25 -rotate-12"></div>
+                                                      <div className="w-1 h-0.5 bg-brand-orange-300 rounded-full absolute bottom-0 left-0.25 rotate-12"></div>
+                                                      <div className="w-1 h-0.5 bg-brand-orange-300 rounded-full absolute bottom-0 right-0.25 -rotate-12"></div>
                         </div>
                       </div>
                     </div>
@@ -1567,8 +1567,6 @@ function Home() {
               </div>
               
               <div className="flex items-center space-x-6 text-sm text-theme-secondary animate-fade-in-right">
-                <a href="#" className="hover:text-theme-primary transition-all duration-300 hover:scale-110">Privacy</a>
-                <a href="#" className="hover:text-theme-primary transition-all duration-300 hover:scale-110">Terms</a>
                 <ThemeToggle />
               </div>
             </div>

@@ -47,13 +47,13 @@ function Contact() {
           --text-tertiary: rgb(100 116 139);
           --border-primary: rgba(51, 65, 85, 0.8);
           --border-secondary: rgba(71, 85, 105, 0.5);
-          --accent-light: #6366f1;
-          --accent-main: #4f46e5;
-          --accent-dark: #4338ca;
-          --accent-darker: #3730a3;
-          --accent-bg-light: rgba(99, 102, 241, 0.1);
-          --accent-bg-medium: rgba(99, 102, 241, 0.2);
-          --accent-border: rgba(99, 102, 241, 0.2);
+                  --accent-light: #FF8A4C;
+        --accent-main: #FF6B35;
+        --accent-dark: #EA580C;
+        --accent-darker: #C2410C;
+        --accent-bg-light: rgba(255, 107, 53, 0.1);
+        --accent-bg-medium: rgba(255, 107, 53, 0.2);
+        --accent-border: rgba(255, 107, 53, 0.2);
         }
 
         /* Light Theme */
@@ -66,13 +66,13 @@ function Contact() {
           --text-tertiary: rgb(100 116 139);
           --border-primary: rgba(203, 213, 225, 0.8);
           --border-secondary: rgba(226, 232, 240, 0.5);
-          --accent-light: #4f46e5;
-          --accent-main: #4338ca;
-          --accent-dark: #3730a3;
-          --accent-darker: #312e81;
-          --accent-bg-light: rgba(99, 102, 241, 0.08);
-          --accent-bg-medium: rgba(99, 102, 241, 0.15);
-          --accent-border: rgba(99, 102, 241, 0.3);
+                  --accent-light: #FF8A4C;
+        --accent-main: #FF6B35;
+        --accent-dark: #EA580C;
+        --accent-darker: #C2410C;
+        --accent-bg-light: rgba(255, 107, 53, 0.08);
+        --accent-bg-medium: rgba(255, 107, 53, 0.15);
+        --accent-border: rgba(255, 107, 53, 0.3);
         }
 
         /* Utility Classes */
@@ -123,10 +123,10 @@ function Contact() {
         
         @keyframes glow {
           0%, 100% {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
           }
           50% {
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
           }
         }
         
@@ -159,7 +159,7 @@ function Contact() {
         }
         
         .bg-gradient-primary-progress { 
-          background: linear-gradient(to right, var(--accent-dark), rgb(6 182 212)) !important; 
+          background: linear-gradient(to right, var(--accent-dark), #D4AF37) !important; 
         }
         
 
@@ -169,16 +169,16 @@ function Contact() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {/* Animated gradient orbs */}
         <div className="absolute top-20 -right-40 w-80 h-80 bg-gradient-primary-soft rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary-purple rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary-orange rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-1/2 w-64 h-64 bg-gradient-primary-light rounded-full blur-3xl animate-pulse"></div>
         
         {/* Floating geometric patterns */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full opacity-80 animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-amber-400 rounded-full opacity-80 animate-pulse"></div>
         <div className="absolute bottom-1/3 left-1/5 w-1.5 h-1.5 bg-primary rounded-full opacity-50 animate-pulse"></div>
         
         {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,138,76,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,138,76,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
       </div>
 
       {/* Floating Navigation */}
@@ -332,8 +332,6 @@ function Contact() {
             </Link>
             
             <div className="flex items-center space-x-6 text-sm text-theme-secondary animate-fade-in-right">
-              <a href="#" className="hover:text-theme-primary transition-all duration-300 hover:scale-110">Privacy</a>
-              <a href="#" className="hover:text-theme-primary transition-all duration-300 hover:scale-110">Terms</a>
               <ThemeToggle />
             </div>
           </div>

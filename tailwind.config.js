@@ -77,6 +77,19 @@ export default {
         'sand': '#F7F3F0', // Soft desert beige background
         'arabic-gold': '#D4AF37',
         'charcoal': '#2C2C2C',
+        // Primary Brand Orange - Global variable for warmth and trust
+        'brand-orange': {
+          50: '#FFF8F1',
+          100: '#FEECDC',
+          200: '#FCD9BD',
+          300: '#FDBA8C',
+          400: '#FF8A4C',
+          500: '#FF6B35', // Main brand orange
+          600: '#EA580C',
+          700: '#C2410C',
+          800: '#9A3412',
+          900: '#7C2D12',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

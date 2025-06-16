@@ -16,7 +16,7 @@ const ThemeToggle: React.FC = () => {
         <Sun className="w-7 h-7 text-yellow-500 group-hover:text-yellow-400 group-hover:rotate-45 transition-all duration-300" strokeWidth={2.5} />
       ) : (
         // Moon icon for switching to dark mode
-        <Moon className="w-7 h-7 text-gray-700 group-hover:text-blue-600 group-hover:-rotate-12 transition-all duration-300" strokeWidth={2.5} />
+        <Moon className="w-7 h-7 text-gray-700 group-hover:text-brand-orange-600 group-hover:-rotate-12 transition-all duration-300" strokeWidth={2.5} />
       )}
     </button>
   )
