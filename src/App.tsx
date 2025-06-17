@@ -6,8 +6,7 @@ import { Input } from '@/components/ui/input'
 import { CornerDownRight, CornerDownLeft } from 'lucide-react'
 import SarahImage from './assets/Sarah.png'
 import MikeImage from './assets/Mike.png'
-import LogoImage from './assets/logo.png'
-import Logo2Image from './assets/logo2.png'
+// Logo is now loaded from public folder
 import CreateAccountImage from './assets/createaccount.png'
 import VerifiedImage from './assets/verified.png'
 import BuyAndSellImage from './assets/buyandsell.png'
@@ -19,21 +18,6 @@ function Home() {
   const { theme } = useTheme()
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
-  const [isLoading, setIsLoading] = useState(() => {
-    // Only show loading on first app load or page refresh
-    // Check if this is a fresh session or if we haven't loaded yet
-    const hasLoadedInSession = sessionStorage.getItem('hasLoadedInSession')
-    return !hasLoadedInSession
-  })
-  const [showContent, setShowContent] = useState(() => {
-    // Show content immediately if we've already loaded in this session
-    const hasLoadedInSession = sessionStorage.getItem('hasLoadedInSession')
-    return !!hasLoadedInSession
-  })
-  const [loadingProgress, setLoadingProgress] = useState(0)
-  const [mockupScreenIndex, setMockupScreenIndex] = useState(0)
-  const [loadingTextIndex, setLoadingTextIndex] = useState(0)
-  const loadingTextWords = ['easy', 'community', 'social']
   const [cryptoData, setCryptoData] = useState([
     { name: 'Bitcoin', symbol: 'BTC', icon: '₿', price: '€41,234.56', change: 2.45, bgColor: 'bg-orange-500' },
     { name: 'Ethereum', symbol: 'ETH', icon: 'Ξ', price: '€2,456.78', change: 1.82, bgColor: 'bg-indigo-600' },
@@ -49,64 +33,7 @@ function Home() {
     { name: 'Algorand', symbol: 'ALGO', icon: '△', price: '€0.24', change: 6.78, bgColor: 'bg-gray-800' }
   ])
 
-  useEffect(() => {
-    // Only run loading sequence if we haven't loaded in this session
-    if (!sessionStorage.getItem('hasLoadedInSession')) {
-      // Loading progress and messages
-      const progressInterval = setInterval(() => {
-        setLoadingProgress(prev => {
-          const newProgress = prev + (100 / 35) // 100% over 3.5 seconds (35 intervals of 100ms)
-          if (newProgress >= 100) {
-            clearInterval(progressInterval)
-            return 100
-          }
-          return newProgress
-        })
-      }, 100)
 
-      // Loading animation duration
-      const loadingTimer = setTimeout(() => {
-        setIsLoading(false)
-        // Mark that we've loaded in this session
-        sessionStorage.setItem('hasLoadedInSession', 'true')
-      }, 3500) // 3.5 seconds for the full experience
-
-      // Show content with a slight delay to prevent blinking
-      const contentTimer = setTimeout(() => {
-        setShowContent(true)
-      }, 4000) // 0.5 seconds after loading ends
-
-      return () => {
-        clearTimeout(loadingTimer)
-        clearTimeout(contentTimer)
-        clearInterval(progressInterval)
-      }
-    }
-  }, [])
-
-  // Loading text rotation - cycles through words every 2 seconds during loading
-  useEffect(() => {
-    if (isLoading) {
-      const textInterval = setInterval(() => {
-        setLoadingTextIndex(prev => (prev + 1) % loadingTextWords.length)
-      }, 2000) // Change word every 2 seconds
-
-      return () => clearInterval(textInterval)
-    }
-  }, [isLoading, loadingTextWords.length])
-
-  // Mockup screen rotation - starts after loading is complete
-  useEffect(() => {
-    if (showContent) {
-      const mockupInterval = setInterval(() => {
-        setMockupScreenIndex(prev => (prev + 1) % 2) // Toggle between 0 (social) and 1 (chart)
-      }, 4000) // Change screen every 4 seconds
-
-      return () => {
-        clearInterval(mockupInterval)
-      }
-    }
-  }, [showContent])
 
   // Real-time crypto price updates
   useEffect(() => {
@@ -132,69 +59,7 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-theme text-theme-primary font-cairo overflow-x-hidden transition-colors duration-300">
-      {/* Loading Screen */}
-      {isLoading && (
-        <div className={`fixed inset-0 bg-gray-950 z-[100] flex items-center justify-center ${!isLoading ? 'loading-fade-out' : ''}`}>
-          {/* Loading Background Effects */}
-          <div className="absolute inset-0 overflow-hidden">
-            {/* Animated Background Orbs */}
-            <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-primary-soft rounded-full blur-2xl animate-pulse loading-particle-1"></div>
-            <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-primary-orange rounded-full blur-3xl animate-pulse loading-particle-2"></div>
-            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-gradient-primary-light rounded-full blur-2xl animate-pulse loading-particle-3"></div>
-          </div>
-
-          {/* Loading Content */}
-          <div className="relative z-10 text-center space-y-8 max-w-2xl mx-auto px-6">
-            {/* Animated Logo */}
-            <div className="flex items-center justify-center space-x-4">
-              <div className="w-20 h-20 flex items-center justify-center loading-logo">
-                <img src={LogoImage} alt="Habibit Logo" className="w-16 h-16 object-contain rounded-xl" />
-              </div>
-              <h1 className="text-4xl font-bold">Habibit</h1>
-            </div>
-
-            {/* Brand Message */}
-            <div className="space-y-4">
-              <div className="text-xl text-gray-300 mx-auto">
-                <p>
-                  Crypto is better when it is{' '}
-                  <span className="text-primary transition-all duration-500">
-                    {loadingTextWords[loadingTextIndex]}
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            {/* Progress Section */}
-            <div className="space-y-6">
-              {/* Progress Bar */}
-              <div className="w-full max-w-md mx-auto">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-gray-400">Loading Progress</span>
-                  <span className="text-sm text-primary font-medium">{Math.round(loadingProgress)}%</span>
-                </div>
-                <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-primary-progress rounded-full"
-                    style={{ 
-                      width: `${loadingProgress}%`,
-                      transition: 'width 0.1s linear'
-                    }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Final Message */}
-      <div>
-              <p className="text-xs text-gray-500">
-                Powered by community • Designed for you
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+        <div className="min-h-screen bg-black text-white font-cairo overflow-x-hidden transition-colors duration-300">
 
       {/* CSS Animations */}
       <style dangerouslySetInnerHTML={{
@@ -217,9 +82,9 @@ function Home() {
         /* Dark Theme (Default) */
         .dark {
           /* Semantic Colors - Dark Theme */
-          --background: rgb(3 7 18);
-          --background-secondary: rgb(15 23 42);
-          --background-tertiary: rgb(30 41 59);
+          --background: rgb(0 0 0);
+          --background-secondary: rgb(0 0 0);
+          --background-tertiary: rgb(0 0 0);
           --surface: rgb(20 29 47);
           --surface-secondary: rgba(30, 41, 59, 0.9);
           --surface-tertiary: rgba(51, 65, 85, 0.8);
@@ -921,75 +786,14 @@ function Home() {
         `
       }} />
 
-      {/* Main Content - Only show when loading is complete */}
-      {!isLoading && (
-        <div className={`transition-opacity duration-500 ${showContent ? 'opacity-100 content-visible' : 'opacity-0'}`}>
-          {/* Cool Vector Background */}
-          <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-20 -right-40 w-80 h-80 bg-gradient-primary-soft rounded-full blur-3xl animate-pulse animate-float"></div>
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary-orange rounded-full blur-3xl animate-pulse animate-float-reverse"></div>
-        <div className="absolute bottom-20 left-1/2 w-64 h-64 bg-gradient-primary-light rounded-full blur-3xl animate-pulse animate-rotate-float"></div>
-        
-        {/* Floating geometric patterns */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full opacity-60 animate-float"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-amber-400 rounded-full opacity-80 animate-float-reverse animate-delay-200"></div>
-        <div className="absolute bottom-1/3 left-1/5 w-1.5 h-1.5 bg-primary rounded-full opacity-50 animate-rotate-float animate-delay-400"></div>
-        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-brand-orange-400 rounded-full opacity-40 animate-float animate-delay-600"></div>
-        <div className="absolute bottom-1/4 right-1/5 w-2 h-2 bg-amber-300 rounded-full opacity-70 animate-float-reverse animate-delay-300"></div>
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,138,76,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,138,76,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-      </div>
-
-      {/* Floating Navigation */}
-      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6 animate-fade-in-up">
-        <div className="bg-surface-secondary backdrop-blur-2xl border border-theme rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 w-full max-w-4xl">
-          <div className="px-6 py-4">
-            <div className="flex items-center justify-between">
-              {/* Logo */}
-              <div className="flex items-center space-x-3 animate-fade-in-left">
-                <div className="w-9 h-9 flex items-center justify-center animate-glow">
-                  <img src={theme === 'light' ? Logo2Image : LogoImage} alt="Habibit Logo" className="w-8 h-8 object-contain rounded-lg" />
-                </div>
-                <span className="text-lg font-bold text-theme-primary">
-                  <span className="hidden md:inline">Habibit Exchange</span>
-                  <span className="md:hidden">Habibit</span>
-                </span>
-              </div>
-
-              {/* Navigation Links - Center */}
-              <div className="hidden md:flex items-center space-x-6 animate-fade-in-up animate-delay-200">
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex items-center space-x-4 animate-fade-in-right animate-delay-300">
-                <a 
-                  href="#top" 
-                  className="hidden md:block text-theme-secondary hover:text-theme-primary transition-all duration-300 text-sm font-medium relative group"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  Home
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary-progress transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <Link 
-                  to="/contact" 
-                  className="hidden md:block text-theme-secondary hover:text-theme-primary transition-all duration-300 text-sm font-medium relative group"
-                >
-                  Contact
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary-progress transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-                <Button 
-                  size="sm"
-                  className="bg-primary-dark hover:bg-primary-darker text-white px-5 py-2 rounded-lg font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 animate-glow"
-                  onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Join the waitlist
-                </Button>
-              </div>
+      {/* Glass Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+        <div className="px-6 py-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Logo and Brand */}
+            <div className="flex items-center space-x-3">
+              <img src="/h-logo-orange.png" alt="Habibit Logo" className="w-10 h-10 object-contain" />
+              <span className="text-white text-2xl font-bold italic">Habibit</span>
             </div>
           </div>
         </div>
@@ -997,13 +801,18 @@ function Home() {
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="pt-24 pb-16 px-6 relative islamic-arabesque">
-          {/* Enhanced Decorative Islamic Elements */}
-          <div className="absolute top-12 left-20 mosque-dome animate-float opacity-40"></div>
-          <div className="absolute bottom-12 right-20 w-32 h-16 bg-islamic-gold-500/20 arabic-arch animate-float-reverse opacity-30 border border-islamic-gold-400/20"></div>
-          <div className="absolute top-1/2 left-10 w-20 h-20 bg-desert-rose-500/15 islamic-star-complex animate-rotate-float opacity-25"></div>
-          <div className="absolute top-20 right-32 minaret animate-float opacity-30"></div>
-          <div className="absolute bottom-16 left-32 w-24 h-24 bg-sahara-500/20 islamic-star animate-float-reverse opacity-20"></div>
+        <section className="min-h-screen flex items-center px-6 relative pt-20">
+          {/* Logo Pattern Background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 opacity-[0.04]" style={{
+              backgroundImage: `url('/h-logo.png')`,
+              backgroundSize: '200px 200px',
+              backgroundRepeat: 'repeat',
+              backgroundPosition: 'center'
+            }}>
+            </div>
+          </div>
+
           
 
           
@@ -1011,10 +820,7 @@ function Home() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div className="space-y-8">
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-light border border-primary text-primary text-sm font-medium animate-fade-in-up">
-                  <div className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
-                  Coming Soon
-                </div>
+
                 
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight animate-fade-in-up animate-delay-200">
                   Buy 200+ crypto with <span className="text-primary">Habibit Exchange</span>
@@ -1026,279 +832,22 @@ function Home() {
 
                 <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-600">
                   <Button 
-                    size="lg"
-                    className="bg-primary-dark hover:bg-primary-darker text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:scale-105 animate-glow"
+                    className="bg-[#f6703f] hover:bg-[#e5602f] text-black px-10 py-5 font-bold uppercase text-lg transition-all duration-300 hover:scale-105 transform skew-x-[-8deg]"
                     onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    Join the Waitlist
+                    <span className="transform skew-x-[8deg] inline-block">Join the Waitlist</span>
                   </Button>
                 </div>
 
               </div>
 
-              {/* Right Content - Social Trading Mockup */}
+              {/* Right Content - App Screenshot */}
               <div className="relative animate-fade-in-right animate-delay-300">
-                {/* Main Phone Mockup */}
-                <div className="relative mx-auto w-80 h-[600px] bg-gray-900 rounded-3xl border border-gray-700 shadow-2xl overflow-hidden phone-float">
-                  {/* Phone Frame */}
-                  <div className="absolute inset-3 bg-gray-950 rounded-2xl overflow-hidden">
-                    {/* Status Bar */}
-                    <div className="h-6 bg-gray-900 flex items-center justify-between px-4 text-xs text-gray-400">
-                      <span>9:41</span>
-                      <div className="flex space-x-1">
-                        <div className="w-4 h-2 bg-gray-600 rounded-sm"></div>
-                        <div className="w-6 h-2 bg-gray-600 rounded-sm"></div>
-                        <div className="w-6 h-2 bg-green-500 rounded-sm animate-pulse"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Dynamic Content - Rotates between Social Feed and Bitcoin Chart */}
-                    {mockupScreenIndex === 0 ? (
-                      <>
-                        {/* App Header - Social Feed */}
-                        <div className="p-4 border-b border-gray-800">
-                          <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-white font-semibold">Community Feed</h3>
-                            <div className="w-8 h-8 bg-brand-orange-700 rounded-full flex items-center justify-center animate-bounce">
-                              <div className="w-4 h-4 relative">
-                                <div className="absolute inset-0 flex items-center justify-center space-x-0.5">
-                                  <div className="w-1 h-1 bg-white rounded-full"></div>
-                                  <div className="w-1 h-1 bg-white rounded-full"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <p className="text-gray-400 text-sm">See what your friends are trading</p>
-                        </div>
-
-                        {/* Social Feed */}
-                        <div className="p-4 space-y-4 overflow-y-auto mockup-content">
-                      {/* Friend's Trade */}
-                      <div className="bg-gray-800/50 rounded-2xl p-4 animate-slide-in-scale">
-                        <div className="flex items-center space-x-3 mb-3">
-                          <img 
-                            src={SarahImage} 
-                            alt="Sarah" 
-                            className="w-8 h-8 rounded-full object-cover border-2 border-primary animate-pulse"
-                          />
-                          <div>
-                            <p className="text-white text-sm font-medium">Sarah_crypto</p>
-                            <p className="text-gray-400 text-xs">2 hours ago</p>
-                          </div>
-                        </div>
-                        <p className="text-gray-300 text-sm mb-2">Just bought more ETH! <span className="inline-block ml-1">
-                          <div className="w-3 h-3 bg-gradient-to-tr from-orange-400 to-red-500 rounded-sm transform rotate-45"></div>
-                        </span></p>
-                        <div className="bg-gray-700/50 rounded-lg p-3">
-                          <div className="flex items-center justify-between">
-                            <span className="text-white text-sm">ETH</span>
-                            <span className="text-green-400 text-sm animate-pulse">+$2,340</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-4 mt-3 text-gray-400">
-                          <button className="flex items-center space-x-1 text-xs hover-text-primary transition-colors">
-                            <span>👍</span>
-                            <span>12</span>
-                          </button>
-                          <button className="flex items-center space-x-1 text-xs hover-text-primary transition-colors">
-                            <span>💬</span>
-                            <span>5</span>
-                          </button>
-                          <button className="text-xs text-primary text-primary-hover transition-colors">Copy Trade</button>
-                        </div>
-                      </div>
-
-                      {/* Another Friend's Trade */}
-                      <div className="bg-gray-800/50 rounded-2xl p-4 animate-slide-in-scale animate-delay-200">
-                        <div className="flex items-center space-x-3 mb-3">
-                          <img 
-                            src={MikeImage} 
-                            alt="Mike" 
-                            className="w-8 h-8 rounded-full object-cover border-2 border-green-500/20 animate-pulse"
-                          />
-                          <div>
-                            <p className="text-white text-sm font-medium">Mike_trader</p>
-                            <p className="text-gray-400 text-xs">4 hours ago</p>
-                          </div>
-                        </div>
-                        <p className="text-gray-300 text-sm mb-2">Loving this BTC dip! <span className="inline-flex items-center space-x-1 ml-1">
-                          <div className="w-2 h-2 bg-gradient-primary rounded-sm"></div>
-                          <div className="w-2 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
-                        </span></p>
-                        <div className="bg-gray-700/50 rounded-lg p-3">
-                          <div className="flex items-center justify-between">
-                            <span className="text-white text-sm">BTC</span>
-                            <span className="text-green-400 text-sm animate-pulse">+$5,000</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-4 mt-3 text-gray-400">
-                          <button className="flex items-center space-x-1 text-xs hover-text-primary transition-colors">
-                            <span>👍</span>
-                            <span>8</span>
-                          </button>
-                          <button className="flex items-center space-x-1 text-xs hover-text-primary transition-colors">
-                            <span>💬</span>
-                            <span>3</span>
-        </button>
-                          <button className="text-xs text-primary text-primary-hover transition-colors">Copy Trade</button>
-                        </div>
-                      </div>
-
-                      {/* Your Portfolio Update */}
-                      <div className="bg-primary-light border border-primary rounded-2xl p-4 animate-slide-in-scale animate-delay-400">
-                        <div className="flex items-center space-x-3 mb-3">
-                          <div className="w-8 h-8 bg-gradient-primary rounded-full animate-glow"></div>
-                          <div>
-                            <p className="text-white text-sm font-medium">Your Portfolio</p>
-                            <p className="text-gray-400 text-xs">Updated now</p>
-                          </div>
-                        </div>
-                        <p className="text-gray-300 text-sm mb-2">Weekly performance: +15.3% 📈</p>
-                        <div className="bg-gray-700/50 rounded-lg p-3">
-                          <div className="flex items-center justify-between">
-                            <span className="text-white text-sm">Total Value</span>
-                            <span className="text-green-400 text-sm animate-pulse">$12,764</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                        </>
-                    ) : (
-                      <>
-                        {/* App Header - Bitcoin Chart */}
-                        <div className="p-4 border-b border-gray-800">
-                          <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-white font-semibold">Bitcoin Chart</h3>
-                            <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-all duration-300 hover:scale-105 animate-bounce">
-                              Buy
-                            </button>
-                          </div>
-                          <p className="text-gray-400 text-sm">BTC/USD • Live Price</p>
-                        </div>
-
-                                                 {/* Bitcoin Chart Content */}
-                         <div className="p-4 space-y-4 overflow-y-auto mockup-content">
-                          {/* Price Header */}
-                          <div className="text-center mb-6">
-                            <div className="text-2xl font-bold text-white mb-1">$43,267.84</div>
-                            <div className="flex items-center justify-center space-x-2">
-                              <span className="text-green-400 text-sm font-medium">+2.34%</span>
-                              <span className="text-gray-400 text-sm">+$987.23</span>
-                            </div>
-                          </div>
-
-                          {/* Chart Area */}
-                          <div className="bg-gray-800/30 rounded-2xl p-4 h-48 relative overflow-hidden">
-                            {/* Chart Background Grid */}
-                            <div className="absolute inset-0 opacity-20">
-                              <div className="grid grid-cols-7 h-full">
-                                {[...Array(7)].map((_, i) => (
-                                  <div key={i} className="border-r border-gray-600/30"></div>
-                                ))}
-                              </div>
-                              <div className="absolute inset-0 grid grid-rows-4">
-                                {[...Array(4)].map((_, i) => (
-                                  <div key={i} className="border-b border-gray-600/30"></div>
-                                ))}
-                              </div>
-                            </div>
-                            
-                            {/* Animated Chart Line */}
-                            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 280 180">
-                              <defs>
-                                <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                  <stop offset="0%" stopColor="rgba(34, 197, 94, 0.3)" />
-                                  <stop offset="100%" stopColor="rgba(34, 197, 94, 0.05)" />
-                                </linearGradient>
-                              </defs>
-                              {/* Chart Area Fill */}
-                              <path
-                                d="M20 140 Q60 120 100 110 T180 95 Q220 85 260 80 L260 160 L20 160 Z"
-                                fill="url(#chartGradient)"
-                                className="animate-pulse"
-                              />
-                              {/* Chart Line */}
-                              <path
-                                d="M20 140 Q60 120 100 110 T180 95 Q220 85 260 80"
-                                stroke="#22c55e"
-                                strokeWidth="2"
-                                fill="none"
-                                className="animate-pulse"
-                              />
-                              {/* Data Points */}
-                              <circle cx="100" cy="110" r="3" fill="#22c55e" className="animate-pulse" />
-                              <circle cx="180" cy="95" r="3" fill="#22c55e" className="animate-pulse" />
-                              <circle cx="260" cy="80" r="3" fill="#22c55e" className="animate-pulse" />
-                            </svg>
-                            
-                            {/* Chart Labels */}
-                            <div className="absolute bottom-2 left-4 text-xs text-gray-500">24H</div>
-                            <div className="absolute bottom-2 right-4 text-xs text-gray-500">Now</div>
-                          </div>
-
-                          {/* Quick Stats */}
-                          <div className="grid grid-cols-2 gap-3">
-                            <div className="bg-gray-800/50 rounded-lg p-3">
-                              <div className="text-gray-400 text-xs mb-1">24h High</div>
-                              <div className="text-white text-sm font-medium">$43,891.32</div>
-                            </div>
-                            <div className="bg-gray-800/50 rounded-lg p-3">
-                              <div className="text-gray-400 text-xs mb-1">24h Low</div>
-                              <div className="text-white text-sm font-medium">$42,156.78</div>
-                            </div>
-                            <div className="bg-gray-800/50 rounded-lg p-3">
-                              <div className="text-gray-400 text-xs mb-1">Volume</div>
-                              <div className="text-white text-sm font-medium">$2.1B</div>
-                            </div>
-                            <div className="bg-gray-800/50 rounded-lg p-3">
-                              <div className="text-gray-400 text-xs mb-1">Market Cap</div>
-                              <div className="text-white text-sm font-medium">$847B</div>
-                            </div>
-                          </div>
-
-                          {/* Action Buttons */}
-                          <div className="grid grid-cols-2 gap-3 mt-4">
-                            <button className="bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105">
-                              Buy BTC
-                            </button>
-                            <button className="bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105">
-                              Sell BTC
-                            </button>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                {/* Floating Elements - Change based on screen */}
-                {mockupScreenIndex === 0 ? (
-                  <>
-                    {/* Social Elements */}
-                    <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary-light rounded-2xl backdrop-blur-sm border border-primary flex items-center justify-center animate-float">
-                      <span className="text-2xl">👥</span>
-                    </div>
-                    <div className="absolute bottom-20 -left-6 w-12 h-12 bg-brand-orange-500/20 rounded-xl backdrop-blur-sm border border-brand-orange-500/20 flex items-center justify-center animate-float-reverse">
-                      <span className="text-lg">💬</span>
-                    </div>
-                    <div className="absolute top-1/2 -right-4 w-10 h-10 bg-green-500/20 rounded-lg backdrop-blur-sm border border-green-500/20 flex items-center justify-center animate-rotate-float">
-                      <span className="text-sm">📈</span>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Trading Elements */}
-                    <div className="absolute -top-6 -right-6 w-16 h-16 bg-orange-500/20 rounded-2xl backdrop-blur-sm border border-orange-500/20 flex items-center justify-center animate-float">
-                      <span className="text-2xl">₿</span>
-                    </div>
-                    <div className="absolute bottom-20 -left-6 w-12 h-12 bg-yellow-500/20 rounded-xl backdrop-blur-sm border border-yellow-500/20 flex items-center justify-center animate-float-reverse">
-                      <span className="text-lg">📊</span>
-                    </div>
-                    <div className="absolute top-1/2 -right-4 w-10 h-10 bg-green-500/20 rounded-lg backdrop-blur-sm border border-green-500/20 flex items-center justify-center animate-rotate-float">
-                      <span className="text-sm">💰</span>
-                    </div>
-                  </>
-                )}
+                <img 
+                  src="/assetiphone.png" 
+                  alt="Habibit App" 
+                  className="w-full max-w-md mx-auto object-contain"
+                />
               </div>
             </div>
           </div>
@@ -1306,11 +855,7 @@ function Home() {
 
         {/* Features Section */}
         <section id="features" className="py-20 px-6 border-t border-gray-800/50 relative">
-          {/* Enhanced Decorative Elements for Features */}
-          <div className="absolute top-10 right-10 w-20 h-20 bg-islamic-gold-500/10 islamic-star-complex animate-float opacity-40"></div>
-          <div className="absolute bottom-10 left-10 w-28 h-14 bg-desert-rose-500/10 arabic-arch animate-float-reverse opacity-30 border border-sahara-400/20"></div>
-          <div className="absolute top-1/2 right-1/4 mosque-dome animate-rotate-float opacity-25"></div>
-          <div className="absolute bottom-1/4 left-1/4 minaret animate-float opacity-20"></div>
+
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -1442,11 +987,7 @@ function Home() {
 
         {/* How It Works - Stepper Section */}
         <section className="py-20 px-6 bg-surface-secondary/10 relative">
-          {/* Enhanced Decorative Islamic Elements */}
-          <div className="absolute top-16 left-16 w-20 h-20 bg-sahara-500/15 islamic-star-complex animate-float opacity-30"></div>
-          <div className="absolute bottom-16 right-16 w-24 h-12 bg-islamic-gold-500/10 arabic-arch animate-float-reverse opacity-25 border border-desert-rose-400/15"></div>
-          <div className="absolute top-1/3 right-20 mosque-dome animate-float opacity-20"></div>
-          <div className="absolute bottom-1/3 left-20 minaret animate-float-reverse opacity-25"></div>
+
           
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -1474,7 +1015,7 @@ function Home() {
                   <div className="relative animate-fade-in-up animate-delay-400 flex flex-col items-center group">
                     {/* Step Circle */}
                     <div className="relative z-10 mb-6">
-                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-glow shadow-lg">
+                      <div className="w-16 h-16 bg-[#f6703f] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-white font-bold text-xl">1</span>
                       </div>
                     </div>
@@ -1496,7 +1037,7 @@ function Home() {
                   <div className="relative animate-fade-in-up animate-delay-500 flex flex-col items-center group">
                     {/* Step Circle */}
                     <div className="relative z-10 mb-6">
-                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-glow shadow-lg">
+                      <div className="w-16 h-16 bg-[#f6703f] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-white font-bold text-xl">2</span>
                       </div>
                     </div>
@@ -1518,7 +1059,7 @@ function Home() {
                   <div className="relative animate-fade-in-up animate-delay-600 flex flex-col items-center group">
                     {/* Step Circle */}
                     <div className="relative z-10 mb-6">
-                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-glow shadow-lg">
+                      <div className="w-16 h-16 bg-[#f6703f] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <span className="text-white font-bold text-xl">3</span>
                       </div>
                     </div>
@@ -1666,10 +1207,7 @@ function Home() {
 
         {/* Waitlist Section */}
         <section id="waitlist" className="py-20 px-6 relative">
-          {/* Enhanced decorative elements */}
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-40 h-20 bg-islamic-gold-500/10 arabic-arch animate-float opacity-30 border border-desert-rose-400/15"></div>
-          <div className="absolute top-20 left-20 mosque-dome animate-float opacity-25"></div>
-          <div className="absolute bottom-20 right-20 w-16 h-16 bg-sahara-500/15 islamic-star-complex animate-rotate-float opacity-20"></div>
+
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-4xl font-bold mb-6 animate-fade-in-up">
               Ready to make crypto <span className="text-primary">social</span>?
@@ -1693,9 +1231,9 @@ function Home() {
                     />
                     <Button 
                       type="submit" 
-                      className="w-full bg-primary-btn text-white font-semibold h-12 rounded-lg transition-all duration-300 hover:scale-105 animate-glow"
+                      className="w-full bg-[#f6703f] hover:bg-[#e5602f] text-black font-bold uppercase h-14 transition-all duration-300 hover:scale-105 transform skew-x-[-8deg]"
                     >
-                      Join the Waitlist
+                      <span className="transform skew-x-[8deg] inline-block">Join the Waitlist</span>
                     </Button>
                   </form>
                 ) : (
@@ -1719,8 +1257,8 @@ function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center mb-8">
               <div className="flex items-center space-x-3 mb-4 md:mb-0 animate-fade-in-left">
-                <div className="w-10 h-10 flex items-center justify-center animate-glow">
-                  <img src={theme === 'light' ? Logo2Image : LogoImage} alt="Habibit Logo" className="w-9 h-9 object-contain rounded-lg" />
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <img src="/h-logo.png" alt="Habibit Logo" className="w-9 h-9 object-contain" />
                 </div>
                 <span className="text-xl font-bold text-theme-primary">
                   <span className="hidden md:inline">Habibit Exchange</span>
@@ -1739,8 +1277,7 @@ function Home() {
           </div>
         </footer>
       </div>
-        </div>
-      )}
+
 
 
     </div>

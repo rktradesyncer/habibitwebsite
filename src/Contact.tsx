@@ -5,8 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Link } from 'react-router-dom'
 import ThemeToggle from './components/ThemeToggle'
 import { useTheme } from './ThemeContext'
-import LogoImage from './assets/logo.png'
-import Logo2Image from './assets/logo2.png'
+// Logo is now loaded from public folder
 
 function Contact() {
   const { theme } = useTheme()
@@ -165,66 +164,15 @@ function Contact() {
 
       `}} />
        
-        {/* Cool Vector Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-20 -right-40 w-80 h-80 bg-gradient-primary-soft rounded-full blur-3xl animate-pulse"></div>
-                        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary-orange rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-1/2 w-64 h-64 bg-gradient-primary-light rounded-full blur-3xl animate-pulse"></div>
-        
-        {/* Floating geometric patterns */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-amber-400 rounded-full opacity-80 animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/5 w-1.5 h-1.5 bg-primary rounded-full opacity-50 animate-pulse"></div>
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,138,76,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,138,76,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+
+
+      {/* Simple Logo - Top Left */}
+      <div className="fixed top-6 left-6 z-50">
+        <Link to="/" className="flex items-center space-x-3">
+          <img src="/h-logo.png" alt="Habibit Logo" className="w-12 h-12 object-contain" />
+          <span className="text-white text-xl font-medium italic">Habibit</span>
+        </Link>
       </div>
-
-      {/* Floating Navigation */}
-      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6 animate-fade-in-up">
-        <div className="bg-surface-secondary backdrop-blur-2xl border border-theme rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 w-full max-w-4xl">
-          <div className="px-6 py-4">
-            <div className="flex items-center justify-between">
-              {/* Logo */}
-              <div className="flex items-center space-x-3 animate-fade-in-left">
-                <Link to="/" className="w-9 h-9 flex items-center justify-center animate-glow">
-                  <img src={theme === 'light' ? Logo2Image : LogoImage} alt="Habibit Logo" className="w-8 h-8 object-contain rounded-lg" />
-                </Link>
-                                  <Link to="/" className="text-lg font-bold text-theme-primary">
-                    <span className="hidden md:inline">Habibit Exchange</span>
-                    <span className="md:hidden">Habibit</span>
-                  </Link>
-              </div>
-
-              {/* Navigation Links - Center */}
-              <div className="hidden md:flex items-center space-x-6 animate-fade-in-up animate-delay-200">
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex items-center space-x-4 animate-fade-in-right animate-delay-300">
-                <Link 
-                  to="/" 
-                  className="hidden md:block text-theme-secondary hover:text-theme-primary transition-all duration-300 text-sm font-medium relative group"
-                >
-                  Home
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary-progress transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-                <span className="text-primary text-sm font-medium">Contact</span>
-                <Button 
-                  size="sm"
-                  className="bg-primary-dark hover:bg-primary-darker text-white px-5 py-2 rounded-lg font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 animate-glow"
-                  onClick={() => {
-                    window.location.href = '/#waitlist';
-                  }}
-                >
-                  Join the waitlist
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Contact Content */}
       <div className="relative z-10 pt-40 pb-20 px-6">
@@ -323,7 +271,7 @@ function Contact() {
           <div className="flex flex-col md:flex-row justify-between items-center mb-8">
             <Link to="/" className="flex items-center space-x-3 mb-4 md:mb-0 animate-fade-in-left">
               <div className="w-10 h-10 flex items-center justify-center animate-glow">
-                                  <img src={theme === 'light' ? Logo2Image : LogoImage} alt="Habibit Logo" className="w-9 h-9 object-contain rounded-lg" />
+                                  <img src="/h-logo.png" alt="Habibit Logo" className="w-9 h-9 object-contain" />
               </div>
                               <span className="text-xl font-bold text-theme-primary">
                   <span className="hidden md:inline">Habibit Exchange</span>
