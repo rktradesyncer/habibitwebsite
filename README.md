@@ -1,147 +1,36 @@
-# Habibit - React + shadcn/ui Project
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A modern React application built with TypeScript, Vite, Tailwind CSS, and shadcn/ui components.
+## Getting Started
 
-## 🚀 Features
-
-- ⚡️ **Vite** - Fast build tool and development server
-- ⚛️ **React 18** with TypeScript for type safety
-- 🎨 **Tailwind CSS** for utility-first styling
-- 🧩 **shadcn/ui** - Beautiful, accessible component library
-- 🌗 **Dark/Light Mode** support ready
-- 📱 **Responsive Design** with mobile-first approach
-
-## 🛠️ Tech Stack
-
-- **Frontend:** React 18, TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **Components:** shadcn/ui
-- **Package Manager:** npm
-
-## 📦 Installed Components
-
-The following shadcn/ui components are available:
-
-- `Button` - Various button styles and variants
-- `Card` - Container component with header, content sections
-- `Input` - Form input component
-- `Label` - Accessible form labels
-
-## 🎯 Getting Started
-
-### Prerequisites
-
-- Node.js (version 16 or higher)
-- npm or yarn
-
-### Installation
-
-1. The project is already set up! Just run:
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-2. Open your browser and navigate to the displayed local URL (usually `http://localhost:5173`)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Available Scripts
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🧩 Adding More Components
+## Learn More
 
-To add more shadcn/ui components, use:
+To learn more about Next.js, take a look at the following resources:
 
-```bash
-npx shadcn@latest add [component-name]
-```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Popular components to try:
-- `dialog` - Modal dialogs
-- `dropdown-menu` - Dropdown menus
-- `select` - Select dropdowns
-- `checkbox` - Checkboxes
-- `textarea` - Text areas
-- `toast` - Notifications
-- `accordion` - Collapsible content
-- `tabs` - Tab navigation
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 🎨 Customization
+## Deploy on Vercel
 
-### Theme Colors
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Edit the CSS variables in `src/index.css` to customize the color scheme:
-
-```css
-:root {
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  /* ... other variables */
-}
-```
-
-### Tailwind Configuration
-
-Modify `tailwind.config.js` to:
-- Add custom colors
-- Extend spacing scale
-- Add custom fonts
-- Configure breakpoints
-
-## 📁 Project Structure
-
-```
-habibit/
-├── @/                      # shadcn/ui components (auto-generated)
-│   └── components/
-│       └── ui/
-├── src/
-│   ├── lib/
-│   │   └── utils.ts       # Utility functions (cn helper)
-│   ├── App.tsx            # Main application component
-│   ├── main.tsx           # Application entry point
-│   └── index.css          # Global styles + Tailwind
-├── components.json         # shadcn/ui configuration
-├── tailwind.config.js     # Tailwind CSS configuration
-└── vite.config.ts         # Vite configuration
-```
-
-## 🎭 Component Examples
-
-The main App component demonstrates:
-
-1. **Counter Example** - State management with buttons
-2. **Form Example** - Input handling with labels
-3. **Component Showcase** - Different button variants
-4. **Responsive Grid** - Mobile-first responsive layout
-
-## 🌟 Next Steps
-
-1. **Add Routing** - Install React Router for navigation
-2. **State Management** - Add Zustand or Redux for complex state
-3. **API Integration** - Add Axios or Fetch for data fetching
-4. **Testing** - Set up Jest and React Testing Library
-5. **Deployment** - Deploy to Vercel, Netlify, or similar platforms
-
-## 📚 Useful Resources
-
-- [shadcn/ui Documentation](https://ui.shadcn.com/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Vite Documentation](https://vitejs.dev/)
-- [React Documentation](https://react.dev/)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
-
----
-
-Happy coding! 🎉
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
 type Theme = 'light' | 'dark'
@@ -18,23 +20,31 @@ export const useTheme = () => {
 }
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
+  const [theme, setTheme] = useState<Theme>('dark') // Default to dark for SSR
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
     // Check localStorage first, then system preference, fallback to dark
     const saved = localStorage.getItem('habibit-theme')
     if (saved === 'light' || saved === 'dark') {
-      return saved
+      setTheme(saved)
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      setTheme(prefersDark ? 'dark' : 'light')
     }
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-  })
+  }, [])
 
   useEffect(() => {
+    if (!mounted) return
+    
     // Save to localStorage
     localStorage.setItem('habibit-theme', theme)
     
     // Update CSS class on document
     document.documentElement.classList.remove('light', 'dark')
     document.documentElement.classList.add(theme)
-  }, [theme])
+  }, [theme, mounted])
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light')
