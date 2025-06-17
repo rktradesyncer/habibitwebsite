@@ -220,14 +220,14 @@ function Home() {
           --background: rgb(3 7 18);
           --background-secondary: rgb(15 23 42);
           --background-tertiary: rgb(30 41 59);
-          --surface: rgb(15 23 42);
-          --surface-secondary: rgba(51, 65, 85, 0.8);
-          --surface-tertiary: rgba(71, 85, 105, 0.8);
+          --surface: rgb(20 29 47);
+          --surface-secondary: rgba(30, 41, 59, 0.9);
+          --surface-tertiary: rgba(51, 65, 85, 0.8);
           --text-primary: rgb(248 250 252);
           --text-secondary: rgb(148 163 184);
           --text-tertiary: rgb(100 116 139);
-          --border-primary: rgba(51, 65, 85, 0.8);
-          --border-secondary: rgba(71, 85, 105, 0.5);
+          --border-primary: rgba(51, 65, 85, 0.5);
+          --border-secondary: rgba(71, 85, 105, 0.3);
           
           /* Brand Colors - Dark Theme */
           --accent-light: var(--primary-400);
@@ -244,17 +244,17 @@ function Home() {
         /* Light Theme */
         .light {
           /* Semantic Colors - Light Theme */
-          --background: rgb(255 255 255);
-          --background-secondary: rgb(248 250 252);
-          --background-tertiary: rgb(241 245 249);
+          --background: rgb(249 250 251);
+          --background-secondary: rgb(243 244 246);
+          --background-tertiary: rgb(229 231 235);
           --surface: rgb(255 255 255);
-          --surface-secondary: rgba(248, 250, 252, 0.8);
-          --surface-tertiary: rgba(241, 245, 249, 0.8);
+          --surface-secondary: rgba(255, 255, 255, 0.9);
+          --surface-tertiary: rgba(249, 250, 251, 0.9);
           --text-primary: rgb(15 23 42);
           --text-secondary: rgb(71 85 105);
           --text-tertiary: rgb(100 116 139);
-          --border-primary: rgba(203, 213, 225, 0.8);
-          --border-secondary: rgba(226, 232, 240, 0.5);
+          --border-primary: rgba(203, 213, 225, 0.6);
+          --border-secondary: rgba(226, 232, 240, 0.4);
           
           /* Brand Colors - Light Theme */
           --accent-light: var(--primary-600);
@@ -422,11 +422,20 @@ function Home() {
         
         .card-hover {
           transition: all 0.3s ease;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .dark .card-hover {
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
         
         .card-hover:hover {
           transform: translateY(-10px) scale(1.02);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dark .card-hover:hover {
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 107, 53, 0.2);
         }
         
         .phone-float {
@@ -1416,7 +1425,7 @@ function Home() {
                 }
               ].map((feature, index) => (
                 <div key={index} className="animate-fade-in-up transform transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl" style={{animationDelay: `${index * 0.1}s`}}>
-                  <Card className="bg-surface border-theme hover:border-primary transition-all duration-300 group card-hover h-full">
+                  <Card className="bg-surface border border-theme hover:border-primary transition-all duration-300 group card-hover h-full backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-medium transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
                       <div className="animate-bounce" style={{animationDelay: `${index * 0.2}s`}}>{feature.icon}</div>
@@ -1554,7 +1563,7 @@ function Home() {
                   {/* First set of crypto cards */}
                   {cryptoData.slice(0, 6).map((crypto, index) => (
                     <div key={`first-${index}`} className="flex-none w-48">
-                      <Card className="bg-surface border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full">
+                      <Card className="bg-surface border border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full backdrop-blur-sm shadow-sm hover:shadow-lg">
                         <CardContent className="p-3">
                           <div className="flex items-center space-x-3">
                             <div className={`w-8 h-8 ${crypto.bgColor} rounded-full flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300`}>
@@ -1577,7 +1586,7 @@ function Home() {
                   {/* Duplicate set for seamless loop */}
                   {cryptoData.slice(0, 6).map((crypto, index) => (
                     <div key={`second-${index}`} className="flex-none w-48">
-                      <Card className="bg-surface border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full">
+                      <Card className="bg-surface border border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full backdrop-blur-sm shadow-sm hover:shadow-lg">
                         <CardContent className="p-3">
                           <div className="flex items-center space-x-3">
                             <div className={`w-8 h-8 ${crypto.bgColor} rounded-full flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300`}>
@@ -1606,7 +1615,7 @@ function Home() {
                   {/* First set of crypto cards (second half) */}
                   {cryptoData.slice(6, 12).map((crypto, index) => (
                     <div key={`reverse-first-${index}`} className="flex-none w-48">
-                      <Card className="bg-surface border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full">
+                      <Card className="bg-surface border border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full backdrop-blur-sm shadow-sm hover:shadow-lg">
                         <CardContent className="p-3">
                           <div className="flex items-center space-x-3">
                             <div className={`w-8 h-8 ${crypto.bgColor} rounded-full flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300`}>
@@ -1629,7 +1638,7 @@ function Home() {
                   {/* Duplicate set for seamless loop */}
                   {cryptoData.slice(6, 12).map((crypto, index) => (
                     <div key={`reverse-second-${index}`} className="flex-none w-48">
-                      <Card className="bg-surface border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full">
+                      <Card className="bg-surface border border-theme hover:border-primary transition-all duration-300 group cursor-pointer h-full backdrop-blur-sm shadow-sm hover:shadow-lg">
                         <CardContent className="p-3">
                           <div className="flex items-center space-x-3">
                             <div className={`w-8 h-8 ${crypto.bgColor} rounded-full flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300`}>
@@ -1670,7 +1679,7 @@ function Home() {
               Be among the first to experience the future of social crypto trading. Get early access when we launch.
             </p>
 
-            <Card className="bg-surface border-theme max-w-md mx-auto card-hover animate-fade-in-up animate-delay-400">
+            <Card className="bg-surface border border-theme max-w-md mx-auto card-hover animate-fade-in-up animate-delay-400 backdrop-blur-sm">
               <CardContent className="p-8">
                 {!isSubscribed ? (
                   <form onSubmit={handleSubscribe} className="space-y-6">
