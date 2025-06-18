@@ -207,11 +207,11 @@ export default function Home() {
         .delay-700 { animation-delay: 0.7s; }
         .delay-800 { animation-delay: 0.8s; }
       `}</style>
-      <div className="min-h-screen bg-gray-900 text-white font-cairo overflow-x-hidden">
+      <div className="min-h-screen text-white font-cairo overflow-x-hidden" style={{backgroundColor: '#080415'}}>
 
       {/* Floating Navigation */}
       <nav className={`fixed top-6 left-0 right-0 z-50 flex justify-center px-6 opacity-0 ${isLoaded ? 'animate-slide-in-top' : ''}`}>
-        <div className="bg-gray-800/80 backdrop-blur-2xl border border-gray-700/50 rounded-2xl shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] w-full max-w-4xl">
+        <div className="bg-black/20 backdrop-blur-2xl border border-orange-500/20 rounded-2xl shadow-[0_20px_25px_-5px_rgba(255,107,53,0.1),0_10px_10px_-5px_rgba(255,107,53,0.05)] w-full max-w-4xl">
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -397,7 +397,7 @@ export default function Home() {
             {/* Features Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Simple & Smart Crypto Trading */}
-              <Card className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(255,107,53,0.15)] transform cursor-pointer">
+              <Card className="bg-black/20 border-orange-500/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(255,107,53,0.25)] transform cursor-pointer">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/30 transition-all duration-300">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
@@ -412,7 +412,7 @@ export default function Home() {
               </Card>
 
               {/* Social Portfolios */}
-              <Card className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(255,107,53,0.15)] transform cursor-pointer">
+              <Card className="bg-black/20 border-orange-500/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(255,107,53,0.25)] transform cursor-pointer">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/30 transition-all duration-300">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
@@ -427,7 +427,7 @@ export default function Home() {
               </Card>
 
               {/* Community Timeline */}
-              <Card className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 transform cursor-pointer">
+              <Card className="bg-black/20 border-orange-500/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 transform cursor-pointer">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/30 transition-all duration-300">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
@@ -442,7 +442,7 @@ export default function Home() {
               </Card>
 
               {/* Built for Retail */}
-              <Card className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 transform cursor-pointer">
+              <Card className="bg-black/20 border-orange-500/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 transform cursor-pointer">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/30 transition-all duration-300">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
@@ -457,7 +457,7 @@ export default function Home() {
               </Card>
 
               {/* Transparent by Design */}
-              <Card className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 transform cursor-pointer">
+              <Card className="bg-black/20 border-orange-500/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 transform cursor-pointer">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/30 transition-all duration-300">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
@@ -472,7 +472,7 @@ export default function Home() {
               </Card>
 
               {/* Your Crypto Companion */}
-              <Card className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 transform cursor-pointer">
+              <Card className="bg-black/20 border-orange-500/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 transform cursor-pointer">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/30 transition-all duration-300">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
@@ -625,7 +625,7 @@ export default function Home() {
                   {/* First Set */}
                   <div className="flex space-x-6 flex-shrink-0">
                     {/* Bitcoin */}
-                    <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-4 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 group hover:shadow-xl hover:shadow-orange-500/20 transform cursor-pointer w-60 flex-shrink-0">
+                    <div className="bg-black/20 border border-orange-500/20 rounded-2xl p-4 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 group hover:shadow-xl hover:shadow-orange-500/30 transform cursor-pointer w-60 flex-shrink-0">
                       <div className="flex items-center space-x-3 mb-3">
                         <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
                           ₿
